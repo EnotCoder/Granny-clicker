@@ -1,0 +1,14 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+build/
+
+# Export / signing secrets (keep local only!)
+export_presets.cfg
+*.keystore
+*.jks
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.tmp

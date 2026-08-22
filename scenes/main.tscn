@@ -1,0 +1,1213 @@
+[gd_scene format=3 uid="uid://4t0xb7os5pw"]
+
+[ext_resource type="Script" uid="uid://c6q1y8cxhixat" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Texture2D" uid="uid://cehnoqm8ssuwc" path="res://assets/fon.png" id="2_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://c2igvixlam6ka" path="res://assets/coin.png" id="3_coin"]
+[ext_resource type="Texture2D" uid="uid://buiq7gmbl1h1q" path="res://assets/granny_button/granny.png" id="4_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://df4u52qilbubp" path="res://assets/granny_button/granny_pressed.png" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://cbyeanagr6ipk" path="res://assets/ring.png" id="6_ring"]
+[ext_resource type="Texture2D" uid="uid://bjfq3saefacre" path="res://assets/settings.png" id="7_settings"]
+[ext_resource type="Texture2D" uid="uid://qrj4slinq8rv" path="res://assets/angela.png" id="8_angela"]
+[ext_resource type="Texture2D" uid="uid://3rug71o3hxfm" path="res://assets/robot.png" id="9_robot"]
+
+[sub_resource type="StyleBoxFlat" id="sb_counter"]
+bg_color = Color(0.07, 0.067, 0.09, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.48, 0.1, 0.08, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_upgrade"]
+bg_color = Color(0.051, 0.049, 0.069, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.42, 0.09, 0.075, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_click_n"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.07, 0.1, 0.16, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.13, 0.2, 0.3, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_click_p"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.06, 0.09, 0.14, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12, 0.17, 0.26, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_click_h"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.13, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.14, 0.2, 0.3, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_disabled"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.08, 0.08, 0.1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.15, 0.15, 0.19, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxEmpty" id="sb_empty"]
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_passive_n"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.05, 0.11, 0.065, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.08, 0.19, 0.12, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_passive_p"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.04, 0.09, 0.055, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.07, 0.16, 0.1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_passive_h"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.07, 0.13, 0.09, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.09, 0.19, 0.12, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_purple_n"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.15, 0.07, 0.2, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.24, 0.11, 0.33, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_purple_p"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.13, 0.06, 0.17, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21, 0.1, 0.29, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_purple_h"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.18, 0.09, 0.24, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.28, 0.14, 0.37, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_teal_n"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0.13, 0.13, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.04, 0.28, 0.28, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_teal_p"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0.11, 0.11, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.04, 0.24, 0.24, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_teal_h"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.04, 0.17, 0.17, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.08, 0.3, 0.3, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_gold_n"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.11, 0.105, 0.15, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.38, 0.14, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_gold_p"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.09, 0.09, 0.14, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55, 0.42, 0.16, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_gold_h"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.14, 0.13, 0.19, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55, 0.42, 0.16, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_frenzy_n"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.28, 0.06, 0.06, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5, 0.12, 0.09, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_frenzy_p"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.23, 0.05, 0.05, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.42, 0.1, 0.08, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="sb_btn_frenzy_h"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.33, 0.09, 0.09, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.55, 0.15, 0.11, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[node name="Main" type="Control" unique_id=345766]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1103480550]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.18400002
+anchor_top = -0.085
+anchor_right = 1.0910001
+anchor_bottom = 1.0300001
+offset_left = -65.47998
+offset_top = -19.8
+offset_right = 702.5199
+offset_bottom = 357.39996
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.68, 0.68)
+mouse_filter = 2
+texture = ExtResource("2_jyhfs")
+
+[node name="CounterPanel" type="Panel" parent="." unique_id=976045987]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 350.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("sb_counter")
+
+[node name="CoinIcon" type="TextureRect" parent="CounterPanel" unique_id=417281413]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 1
+offset_left = 11.999999
+offset_top = 12.0
+offset_right = 1266.0
+offset_bottom = 1266.0
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_coin")
+stretch_mode = 5
+
+[node name="CoinsLabel" type="Label" parent="CounterPanel" unique_id=1489328915]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = -71.0
+offset_right = -21.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.82, 0.3, 1)
+theme_override_colors/font_outline_color = Color(0.29, 0.18, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 40
+text = "0"
+vertical_alignment = 1
+
+[node name="PerSecLabel" type="Label" parent="." unique_id=1278938817]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 16.0
+offset_top = 106.0
+offset_right = 360.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.13, 0.77, 0.37, 1)
+theme_override_font_sizes/font_size = 18
+text = "+0/сек"
+
+[node name="MemeButton" type="TextureButton" parent="." unique_id=1873784855]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -465.0
+offset_top = -185.0
+offset_right = -35.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(215, 215)
+texture_normal = ExtResource("4_tbgi4")
+texture_pressed = ExtResource("5_tbgi4")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MemeRing" type="TextureRect" parent="." unique_id=455490787]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = -493.0
+offset_top = -213.0
+offset_right = -7.0
+offset_bottom = 273.0
+mouse_filter = 2
+texture = ExtResource("6_ring")
+
+[node name="RobotSprite" type="Sprite2D" parent="." unique_id=1010000037]
+unique_name_in_owner = true
+position = Vector2(155, 501)
+scale = Vector2(0.225, 0.225)
+texture = ExtResource("9_robot")
+
+[node name="AngelaButton" type="TextureButton" parent="." unique_id=1010000036]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_right = 330.0
+offset_bottom = 330.0
+focus_mode = 0
+texture_normal = ExtResource("8_angela")
+texture_pressed = ExtResource("8_angela")
+texture_hover = ExtResource("8_angela")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="UpgradePanel" type="Panel" parent="." unique_id=1488315836]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -527.0
+offset_top = -335.0
+offset_right = -27.0
+offset_bottom = 336.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("sb_upgrade")
+
+[node name="Title" type="Label" parent="UpgradePanel" unique_id=299611848]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = -8.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.3, 1)
+theme_override_font_sizes/font_size = 26
+text = "Апгрейды"
+horizontal_alignment = 1
+
+[node name="UpgradeScroll" type="ScrollContainer" parent="UpgradePanel" unique_id=1010000001]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 56.0
+offset_right = -14.0
+offset_bottom = -210.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="UpgradeBox" type="VBoxContainer" parent="UpgradePanel/UpgradeScroll" unique_id=1485906755]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="ClickUpgradeButton" type="Button" parent="UpgradePanel/UpgradeScroll/UpgradeBox" unique_id=1652902247]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("sb_btn_click_n")
+theme_override_styles/pressed = SubResource("sb_btn_click_p")
+theme_override_styles/hover = SubResource("sb_btn_click_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Сила клика
+Ур. 0 — 15 монет"
+
+[node name="PassiveUpgradeButton" type="Button" parent="UpgradePanel/UpgradeScroll/UpgradeBox" unique_id=111229350]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("sb_btn_passive_n")
+theme_override_styles/pressed = SubResource("sb_btn_passive_p")
+theme_override_styles/hover = SubResource("sb_btn_passive_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Пассивный доход
+Ур. 0 — 40 монет"
+
+[node name="CritUpgradeButton" type="Button" parent="UpgradePanel/UpgradeScroll/UpgradeBox" unique_id=1010000002]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("sb_btn_purple_n")
+theme_override_styles/pressed = SubResource("sb_btn_purple_p")
+theme_override_styles/hover = SubResource("sb_btn_purple_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Крит
+Ур. 0 — 250 монет"
+
+[node name="AutoUpgradeButton" type="Button" parent="UpgradePanel/UpgradeScroll/UpgradeBox" unique_id=1010000003]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("sb_btn_teal_n")
+theme_override_styles/pressed = SubResource("sb_btn_teal_p")
+theme_override_styles/hover = SubResource("sb_btn_teal_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Авто-кликер
+Ур. 0 — 800 монет"
+
+[node name="GoldUpgradeButton" type="Button" parent="UpgradePanel/UpgradeScroll/UpgradeBox" unique_id=1010000004]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 62)
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("sb_btn_gold_n")
+theme_override_styles/pressed = SubResource("sb_btn_gold_p")
+theme_override_styles/hover = SubResource("sb_btn_gold_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Золотая бабушка
+Ур. 0 — 5000 монет"
+
+[node name="BottomBox" type="VBoxContainer" parent="UpgradePanel" unique_id=1010000005]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -442.0
+offset_top = -146.0
+offset_right = -47.0
+offset_bottom = -18.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 8
+metadata/_edit_group_ = true
+
+[node name="SoulsLabel" type="Label" parent="UpgradePanel/BottomBox" unique_id=1010000006]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 17
+text = "Души бабушек: 0  (+0%)"
+horizontal_alignment = 1
+
+[node name="MediaRow" type="HBoxContainer" parent="UpgradePanel/BottomBox" unique_id=1010000025]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AdvButton" type="Button" parent="UpgradePanel/BottomBox/MediaRow" unique_id=993446717]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("sb_btn_gold_n")
+theme_override_styles/pressed = SubResource("sb_btn_gold_p")
+theme_override_styles/hover = SubResource("sb_btn_gold_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Реклама: x2 монет"
+
+[node name="FrenzyButton" type="Button" parent="UpgradePanel/BottomBox/MediaRow" unique_id=1010000026]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.93, 0.9, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.93, 0.9, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("sb_btn_frenzy_n")
+theme_override_styles/pressed = SubResource("sb_btn_frenzy_p")
+theme_override_styles/hover = SubResource("sb_btn_frenzy_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Бешеный дедушка"
+
+[node name="ActionsRow" type="HBoxContainer" parent="UpgradePanel/BottomBox" unique_id=1010000007]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PrestigeButton" type="Button" parent="UpgradePanel/BottomBox/ActionsRow" unique_id=1010000008]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("sb_btn_gold_n")
+theme_override_styles/pressed = SubResource("sb_btn_gold_p")
+theme_override_styles/hover = SubResource("sb_btn_gold_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Перерождение"
+
+[node name="AchievementsButton" type="Button" parent="UpgradePanel/BottomBox/ActionsRow" unique_id=1010000009]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("sb_btn_gold_n")
+theme_override_styles/pressed = SubResource("sb_btn_gold_p")
+theme_override_styles/hover = SubResource("sb_btn_gold_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Ачивки"
+
+[node name="FullscreenButton" type="Button" parent="UpgradePanel/BottomBox/ActionsRow" unique_id=1403519203]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 17
+theme_override_styles/normal = SubResource("sb_btn_gold_n")
+theme_override_styles/pressed = SubResource("sb_btn_gold_p")
+theme_override_styles/hover = SubResource("sb_btn_gold_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "⛶ Экран"
+
+[node name="SettingsButton" type="TextureButton" parent="." unique_id=1010000027]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -84.0
+offset_right = 1313.3334
+offset_bottom = 1192.6665
+grow_vertical = 0
+scale = Vector2(0.065, 0.065)
+tooltip_text = "Настройки"
+focus_mode = 0
+texture_normal = ExtResource("7_settings")
+texture_hover = ExtResource("7_settings")
+ignore_texture_size = true
+
+[node name="OfflineLabel" type="Label" parent="." unique_id=1933767652]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = 20.0
+offset_top = 132.0
+offset_right = 640.0
+offset_bottom = 160.0
+theme_override_colors/font_color = Color(0.7, 0.65, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+text = "Офлайн-режим: прогресс сохраняется локально, реклама недоступна."
+
+[node name="LoadingOverlay" type="ColorRect" parent="." unique_id=1960603150]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05, 0.05, 0.1, 1)
+
+[node name="Oname" type="Label" parent="LoadingOverlay" unique_id=365333097]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -44.0
+offset_right = 200.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.3, 1)
+theme_override_font_sizes/font_size = 46
+text = "meme_click"
+horizontal_alignment = 1
+
+[node name="Osub" type="Label" parent="LoadingOverlay" unique_id=622768439]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 16.0
+offset_right = 200.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.7, 1)
+theme_override_font_sizes/font_size = 22
+text = "Загрузка..."
+horizontal_alignment = 1
+
+[node name="Toast" type="Label" parent="." unique_id=1010000011]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 120.0
+offset_top = 70.0
+offset_right = -120.0
+offset_bottom = 110.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.3, 1)
+theme_override_colors/font_outline_color = Color(0.29, 0.18, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 26
+text = "Ачивка открыта!"
+horizontal_alignment = 1
+
+[node name="AchievementsPanel" type="ColorRect" parent="." unique_id=1010000012]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.72)
+
+[node name="AchCenter" type="Panel" parent="AchievementsPanel" unique_id=1010000013]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -240.0
+offset_right = 340.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("sb_upgrade")
+
+[node name="AchTitle" type="Label" parent="AchievementsPanel/AchCenter" unique_id=1010000014]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = -8.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.3, 1)
+theme_override_font_sizes/font_size = 28
+text = "Ачивки"
+horizontal_alignment = 1
+
+[node name="AchScroll" type="ScrollContainer" parent="AchievementsPanel/AchCenter" unique_id=1010000015]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 60.0
+offset_right = -16.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="AchList" type="VBoxContainer" parent="AchievementsPanel/AchCenter/AchScroll" unique_id=1010000016]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="AchCloseButton" type="Button" parent="AchievementsPanel/AchCenter" unique_id=1010000017]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -50.0
+offset_right = -16.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("sb_btn_gold_n")
+theme_override_styles/pressed = SubResource("sb_btn_gold_p")
+theme_override_styles/hover = SubResource("sb_btn_gold_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Закрыть"
+
+[node name="PrestigePanel" type="ColorRect" parent="." unique_id=1010000018]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.72)
+
+[node name="ConfirmCenter" type="Panel" parent="PrestigePanel" unique_id=1010000019]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -170.0
+offset_right = 280.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("sb_upgrade")
+
+[node name="PrestigeTitle" type="Label" parent="PrestigePanel/ConfirmCenter" unique_id=1010000020]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 12.0
+offset_right = -8.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.3, 1)
+theme_override_font_sizes/font_size = 26
+text = "Перерождение"
+horizontal_alignment = 1
+
+[node name="PrestigeInfo" type="Label" parent="PrestigePanel/ConfirmCenter" unique_id=1010000021]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 64.0
+offset_right = -20.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_font_sizes/font_size = 18
+text = "Перерождение сбросит монеты и все апгрейды, но даст души бабушек (+10% к доходу за каждую)."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ConfirmRow" type="HBoxContainer" parent="PrestigePanel/ConfirmCenter" unique_id=1010000022]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -56.0
+offset_right = -16.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 12
+
+[node name="PrestigeCancelButton" type="Button" parent="PrestigePanel/ConfirmCenter/ConfirmRow" unique_id=1010000023]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("sb_btn_gold_n")
+theme_override_styles/pressed = SubResource("sb_btn_gold_p")
+theme_override_styles/hover = SubResource("sb_btn_gold_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Отмена"
+
+[node name="PrestigeConfirmButton" type="Button" parent="PrestigePanel/ConfirmCenter/ConfirmRow" unique_id=1010000024]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("sb_btn_gold_n")
+theme_override_styles/pressed = SubResource("sb_btn_gold_p")
+theme_override_styles/hover = SubResource("sb_btn_gold_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Переродиться"
+
+[node name="SettingsPanel" type="ColorRect" parent="." unique_id=1010000028]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.72)
+
+[node name="SettingsCenter" type="Panel" parent="SettingsPanel" unique_id=1010000029]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -180.0
+offset_right = 300.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("sb_upgrade")
+
+[node name="SettingsTitle" type="Label" parent="SettingsPanel/SettingsCenter" unique_id=1010000030]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = -8.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.3, 1)
+theme_override_font_sizes/font_size = 28
+text = "Настройки"
+horizontal_alignment = 1
+
+[node name="SettingsBox" type="VBoxContainer" parent="SettingsPanel/SettingsCenter" unique_id=1010000031]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 64.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="LanguageButton" type="Button" parent="SettingsPanel/SettingsCenter/SettingsBox" unique_id=1010000035]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("sb_btn_gold_n")
+theme_override_styles/pressed = SubResource("sb_btn_gold_p")
+theme_override_styles/hover = SubResource("sb_btn_gold_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Язык: Русский"
+
+[node name="SoundButton" type="Button" parent="SettingsPanel/SettingsCenter/SettingsBox" unique_id=1010000010]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("sb_btn_gold_n")
+theme_override_styles/pressed = SubResource("sb_btn_gold_p")
+theme_override_styles/hover = SubResource("sb_btn_gold_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Звук: вкл"
+
+[node name="ResetButton" type="Button" parent="SettingsPanel/SettingsCenter/SettingsBox" unique_id=1010000032]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.9, 0.88, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.9, 0.88, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("sb_btn_frenzy_n")
+theme_override_styles/pressed = SubResource("sb_btn_frenzy_p")
+theme_override_styles/hover = SubResource("sb_btn_frenzy_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Сброс прогресса"
+
+[node name="ResetHint" type="Label" parent="SettingsPanel/SettingsCenter/SettingsBox" unique_id=1010000033]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="SettingsCloseButton" type="Button" parent="SettingsPanel/SettingsCenter/SettingsBox" unique_id=1010000034]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("sb_btn_gold_n")
+theme_override_styles/pressed = SubResource("sb_btn_gold_p")
+theme_override_styles/hover = SubResource("sb_btn_gold_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Закрыть"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1017626724]
