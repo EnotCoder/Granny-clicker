@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://4t0xb7os5pw"]
 
 [ext_resource type="Script" uid="uid://c6q1y8cxhixat" path="res://scripts/main.gd" id="1_main"]
-[ext_resource type="Texture2D" uid="uid://cehnoqm8ssuwc" path="res://assets/fon.png" id="2_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://cehnoqm8ssuwc" path="res://assets/fons/fon_1.png" id="2_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://c2igvixlam6ka" path="res://assets/coin.png" id="3_coin"]
 [ext_resource type="Texture2D" uid="uid://buiq7gmbl1h1q" path="res://assets/granny_button/granny.png" id="4_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://df4u52qilbubp" path="res://assets/granny_button/granny_pressed.png" id="5_tbgi4"]
@@ -801,19 +801,17 @@ ignore_texture_size = true
 
 [node name="PanelToggle" type="Button" parent="." unique_id=1010000090]
 unique_name_in_owner = true
+z_index = 10
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 0.0
 offset_left = -56.0
 offset_top = 10.0
 offset_right = -10.0
 offset_bottom = 56.0
 grow_horizontal = 0
 grow_vertical = 0
-z_index = 10
 theme_override_colors/font_color = Color(1, 0.82, 0.3, 1)
 theme_override_font_sizes/font_size = 28
 text = "→"
@@ -901,13 +899,13 @@ horizontal_alignment = 1
 [node name="AchievementsPanel" type="ColorRect" parent="." unique_id=1010000012]
 unique_name_in_owner = true
 visible = false
+z_index = 150
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-z_index = 150
 color = Color(0, 0, 0, 0.72)
 
 [node name="AchCenter" type="Panel" parent="AchievementsPanel" unique_id=1010000013]
@@ -952,7 +950,6 @@ offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
-vertical_scroll_mode = 1
 
 [node name="AchList" type="VBoxContainer" parent="AchievementsPanel/AchCenter/AchScroll" unique_id=1010000016]
 unique_name_in_owner = true
@@ -990,13 +987,13 @@ text = "Закрыть"
 [node name="PrestigePanel" type="ColorRect" parent="." unique_id=1010000018]
 unique_name_in_owner = true
 visible = false
+z_index = 150
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-z_index = 150
 color = Color(0, 0, 0, 0.72)
 
 [node name="ConfirmCenter" type="Panel" parent="PrestigePanel" unique_id=1010000019]
@@ -1101,13 +1098,13 @@ text = "Переродиться"
 [node name="SettingsPanel" type="ColorRect" parent="." unique_id=1010000028]
 unique_name_in_owner = true
 visible = false
+z_index = 150
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-z_index = 150
 color = Color(0, 0, 0, 0.72)
 
 [node name="SettingsCenter" type="Panel" parent="SettingsPanel" unique_id=1010000029]
