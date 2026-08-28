@@ -184,6 +184,11 @@ func spawn_float(amount: float, is_crit: bool = false) -> void:
 	spawn_float_at(amount, vp * Vector2(0.31, 0.52) + Vector2(randf_range(-80, 80), randf_range(-20, 20)), is_crit)
 
 func spawn_float_at(amount: float, pos: Vector2, is_crit: bool = false, angela: bool = false) -> void:
+	var ach := _root.get_node_or_null("%AchievementsPanel")
+	var pres := _root.get_node_or_null("%PrestigePanel")
+	var setp := _root.get_node_or_null("%SettingsPanel")
+	if (ach and ach.visible) or (pres and pres.visible) or (setp and setp.visible):
+		return
 	var f := Label.new()
 	var frenz := GameState.is_frenzy()
 	f.text = "+%s" % GameState.format_num(amount)
