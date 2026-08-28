@@ -16,6 +16,14 @@ var _panel_shown_left: float = NAN
 var _panel_shown_right: float = NAN
 var _panel_visible: bool = true
 
+const BG_TEXTURES := [
+	preload("res://assets/fons/fon_1.png"),
+	preload("res://assets/fons/fon_2.png"),
+	preload("res://assets/fons/fon_3.png"),
+	preload("res://assets/fons/fon_4.png"),
+	preload("res://assets/fons/fon_5.png"),
+]
+
 func _ready() -> void:
 	_fx = UIFx.new(self)
 	_hud = UIHud.new(self)
@@ -36,6 +44,9 @@ func _ready() -> void:
 	YandexSDK.data_loaded.connect(GameState.from_save_data)
 	GameState.frenzy_started.connect(_fx.frenzy_burst)
 	GameState.prestiged.connect(_fx.screamer)
+	GameState.loaded.connect(_apply_background)
+	GameState.prestiged.connect(_apply_background)
+	_apply_background()
 	AudioManager.set_muted(not GameState.sound_on)
 	_fx.pulse_loop(%Oname, 0.55, 0.7)
 	_fx.start_meme_bob()
@@ -61,6 +72,12 @@ func _refresh_all() -> void:
 	_upgrades.update()
 	_prestige.update()
 	_frenzy.update_button()
+
+func _apply_background() -> void:
+	var idx := clampi(GameState.prestige_count, 0, BG_TEXTURES.size() - 1)
+	var bg := get_node_or_null("%Background")
+	if bg != null:
+		bg.texture = BG_TEXTURES[idx]
 
 func _toggle_panel() -> void:
 	if _upgrade_panel == null or _panel_toggle == null:
