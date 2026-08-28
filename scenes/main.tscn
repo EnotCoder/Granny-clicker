@@ -814,6 +814,7 @@ text = "Офлайн-режим: прогресс сохраняется лок�
 [node name="LoadingOverlay" type="ColorRect" parent="." unique_id=1960603150]
 unique_name_in_owner = true
 visible = false
+z_index = 200
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
