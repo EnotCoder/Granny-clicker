@@ -10,6 +10,11 @@ var _frenzy: UIFrenzy
 var _angela: UIAngela
 var _robot: UIRobot
 var _ads: AdsController
+var _upgrade_panel: Control
+var _panel_toggle: Button
+var _panel_shown_left: float = NAN
+var _panel_shown_right: float = NAN
+var _panel_visible: bool = true
 
 func _ready() -> void:
 	_fx = UIFx.new(self)
@@ -24,6 +29,9 @@ func _ready() -> void:
 	_robot = UIRobot.new(self, _fx)
 	_frenzy._angela = _angela
 	_ads = AdsController.new(self, _fx)
+	_upgrade_panel = get_node("%UpgradePanel")
+	_panel_toggle = get_node("%PanelToggle")
+	_panel_toggle.pressed.connect(_toggle_panel)
 	_fx.setup_shadows()
 	YandexSDK.data_loaded.connect(GameState.from_save_data)
 	GameState.frenzy_started.connect(_fx.frenzy_burst)
@@ -53,3 +61,18 @@ func _refresh_all() -> void:
 	_upgrades.update()
 	_prestige.update()
 	_frenzy.update_button()
+
+func _toggle_panel() -> void:
+	if _upgrade_panel == null or _panel_toggle == null:
+		return
+	if is_nan(_panel_shown_left):
+		_panel_shown_left = _upgrade_panel.offset_left
+		_panel_shown_right = _upgrade_panel.offset_right
+	_panel_visible = not _panel_visible
+	var width := _panel_shown_right - _panel_shown_left
+	var tl := _panel_shown_left if _panel_visible else _panel_shown_right + 40.0
+	var tr := _panel_shown_right if _panel_visible else _panel_shown_right + width + 40.0
+	var tw := create_tween()
+	tw.tween_property(_upgrade_panel, "offset_left", tl, 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tw.parallel().tween_property(_upgrade_panel, "offset_right", tr, 0.25).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	_panel_toggle.text = "→" if _panel_visible else "←"
