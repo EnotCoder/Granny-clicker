@@ -2,6 +2,9 @@ class_name UIAngela
 extends RefCounted
 
 const SZ := Vector2(330, 330)
+const FLY_DURATION := 4.5
+const ALPHA := 0.6
+const BOB := 22.0
 
 var _root: Control
 var _fx: UIFx
@@ -61,50 +64,26 @@ func set_active(active: bool) -> void:
 	if not active:
 		hide()
 
-func _clamp_target(target: Vector2) -> Vector2:
-	var vp := _root.get_viewport_rect().size
-	var max_x := maxf(vp.x - SZ.x, 0.0)
-	var max_y := maxf(vp.y - SZ.y, 0.0)
-	var panel: Control = _root.get_node("%UpgradePanel")
-	if panel != null:
-		var right_limit := panel.get_global_rect().position.x - SZ.x - 24.0
-		max_x = maxf(0.0, mini(max_x, right_limit))
-	return target.clamp(Vector2(24, 24), Vector2(maxf(max_x, 24.0), maxf(max_y, 24.0)))
-
 func _spawn() -> void:
 	var vp := _root.get_viewport_rect().size
-	var edge := randi() % 4
-	var start: Vector2
-	var target: Vector2
-	var from_center := vp * Vector2(0.5, 0.5) + Vector2(randf_range(-240, 240), randf_range(-120, 120))
-	match edge:
-		0:
-			start = Vector2(from_center.x, -SZ.y + 60)
-			target = Vector2(from_center.x, -110)
-		1:
-			start = Vector2(from_center.x, vp.y + 60)
-			target = Vector2(from_center.x, vp.y - SZ.y + 110)
-		2:
-			start = Vector2(-SZ.x + 60, from_center.y)
-			target = Vector2(-110, from_center.y)
-		_:
-			start = Vector2(vp.x + 60, from_center.y)
-			target = Vector2(vp.x - SZ.x + 110, from_center.y)
-	target = _clamp_target(target)
+	var y := vp.y * 0.5 - SZ.y * 0.5
+	var start := Vector2(-SZ.x - 40.0, y)
+	var end := Vector2(vp.x + 40.0, y)
 	_button.position = start
-	_button.scale = Vector2(0.85, 0.85)
+	_button.scale = Vector2(0.9, 0.9)
 	_button.modulate.a = 0.0
 	_button.visible = true
-	_lifetime = 7.0
+	_lifetime = FLY_DURATION + 0.6
 	if _tween:
 		_tween.kill()
 	_tween = _root.create_tween()
+	_tween.set_parallel(true)
+	_tween.tween_property(_button, "modulate:a", ALPHA, 0.4).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	_tween.tween_property(_button, "scale", Vector2.ONE, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	_tween.tween_property(_button, "position:x", end.x, FLY_DURATION).set_trans(Tween.TRANS_LINEAR)
+	_tween.tween_method(func(p: float) -> void: _button.position.y = y + sin(p * PI) * BOB, 0.0, 1.0, FLY_DURATION)
+	_tween.tween_property(_button, "modulate:a", 0.0, 0.6).set_delay(FLY_DURATION - 0.6).set_trans(Tween.TRANS_SINE)
 	_tween.set_parallel(false)
-	_tween.tween_property(_button, "position", target, 0.35).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	_tween.parallel().tween_property(_button, "modulate:a", 1.0, 0.35)
-	_tween.parallel().tween_property(_button, "scale", Vector2.ONE, 0.35).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-	_tween.tween_interval(6.2)
-	_tween.tween_property(_button, "modulate:a", 0.0, 0.35)
 	_tween.tween_callback(hide)
 
 func _on_pressed() -> void:
