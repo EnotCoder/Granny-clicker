@@ -816,6 +816,22 @@ theme_override_colors/font_color = Color(1, 0.82, 0.3, 1)
 theme_override_font_sizes/font_size = 28
 text = "→"
 
+[node name="TeddyButton" type="TextureButton" parent="." unique_id=1010000091]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 610.0
+offset_top = 280.0
+offset_right = 750.0
+offset_bottom = 440.0
+focus_mode = 0
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="OfflineLabel" type="Label" parent="." unique_id=1933767652]
 unique_name_in_owner = true
 visible = false
@@ -1223,6 +1239,117 @@ theme_override_colors/font_pressed_color = Color(0.961, 0.941, 0.898, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0.416, 0.404, 0.502, 1)
 theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("sb_btn_gold_n")
+theme_override_styles/pressed = SubResource("sb_btn_gold_p")
+theme_override_styles/hover = SubResource("sb_btn_gold_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Закрыть"
+
+[node name="TeddyPanel" type="ColorRect" parent="." unique_id=1010000092]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+z_index = 160
+color = Color(0, 0, 0, 0.55)
+
+[node name="TeddyCenter" type="Panel" parent="TeddyPanel" unique_id=1010000093]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -150.0
+offset_right = 220.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("sb_upgrade")
+
+[node name="TeddyTitle" type="Label" parent="TeddyPanel/TeddyCenter" unique_id=1010000094]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = -8.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.3, 1)
+theme_override_font_sizes/font_size = 23
+text = "Тедди: чёт или нечёт?"
+horizontal_alignment = 1
+
+[node name="TeddyHint" type="Label" parent="TeddyPanel/TeddyCenter" unique_id=1010000099]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 54.0
+offset_right = -8.0
+offset_bottom = 82.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7, 0.65, 0.5, 1)
+theme_override_font_sizes/font_size = 14
+text = "Победа: ×1.5   |   Проигрыш: −50%"
+horizontal_alignment = 1
+
+[node name="TeddyBox" type="VBoxContainer" parent="TeddyPanel/TeddyCenter" unique_id=1010000095]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 90.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="EvenButton" type="Button" parent="TeddyPanel/TeddyCenter/TeddyBox" unique_name_in_owner = true]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("sb_btn_click_n")
+theme_override_styles/pressed = SubResource("sb_btn_click_p")
+theme_override_styles/hover = SubResource("sb_btn_click_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Чёт"
+
+[node name="OddButton" type="Button" parent="TeddyPanel/TeddyCenter/TeddyBox" unique_name_in_owner = true]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("sb_btn_purple_n")
+theme_override_styles/pressed = SubResource("sb_btn_purple_p")
+theme_override_styles/hover = SubResource("sb_btn_purple_h")
+theme_override_styles/disabled = SubResource("sb_btn_disabled")
+theme_override_styles/focus = SubResource("sb_empty")
+text = "Нечёт"
+
+[node name="TeddyCloseButton" type="Button" parent="TeddyPanel/TeddyCenter/TeddyBox" unique_name_in_owner = true]
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.961, 0.941, 0.898, 1)
 theme_override_font_sizes/font_size = 19
 theme_override_styles/normal = SubResource("sb_btn_gold_n")
 theme_override_styles/pressed = SubResource("sb_btn_gold_p")

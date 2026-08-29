@@ -9,6 +9,7 @@ var _settings: UISettings
 var _frenzy: UIFrenzy
 var _angela: UIAngela
 var _robot: UIRobot
+var _teddy: UITeddy
 var _ads: AdsController
 var _upgrade_panel: Control
 var _panel_toggle: Button
@@ -35,6 +36,7 @@ func _ready() -> void:
 	_frenzy = UIFrenzy.new(self, _fx)
 	_angela = UIAngela.new(self, _fx)
 	_robot = UIRobot.new(self, _fx)
+	_teddy = UITeddy.new(self, _fx)
 	_frenzy._angela = _angela
 	_ads = AdsController.new(self, _fx)
 	_upgrade_panel = get_node("%UpgradePanel")
