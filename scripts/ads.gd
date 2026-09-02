@@ -24,6 +24,8 @@ func _init(root: Control, fx: UIFx) -> void:
 	YandexSDK.launch_adv_closed.connect(_on_launch_adv_closed)
 	GameState.language_changed.connect(_apply_language)
 	GameState.loaded.connect(_apply_language)
+	GameState.web_started.connect(_update_adv_button)
+	GameState.web_ended.connect(_update_adv_button)
 	YandexSDK.language_loaded.connect(_apply_language)
 	_apply_language()
 	# Показываем экран загрузки сразу, чтобы скрыть момент отрисовки первого кадра.
@@ -31,8 +33,16 @@ func _init(root: Control, fx: UIFx) -> void:
 
 func _apply_language() -> void:
 	_root.get_node("%AdvButton").text = "Реклама: x2 монет" if Loc.ru() else "Ad: x2 coins"
+	_update_adv_button()
+
+func _update_adv_button() -> void:
+	var btn: Button = _root.get_node("%AdvButton")
+	if btn:
+		btn.disabled = GameState.is_web()
 
 func _on_adv_pressed() -> void:
+	if GameState.is_web():
+		return
 	GameState.set_active(false)
 	AudioManager.pause()
 	_timer_ms = 0.0 # Сбрасываем таймер при показе любой рекламы

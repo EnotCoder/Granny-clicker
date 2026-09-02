@@ -41,7 +41,10 @@ func update() -> void:
 		_souls_label.text = "Души бабушек: %d (+%d%%)\nПерерождений: %d/%d\nЦена перерождения: %s" % [GameState.prestige_souls, bonus, left, GameState.MAX_PRESTIGES, GameState.format_num(need)]
 	else:
 		_souls_label.text = "Granny souls: %d (+%d%%)\nRebirths: %d/%d\nRebirth price: %s" % [GameState.prestige_souls, bonus, left, GameState.MAX_PRESTIGES, GameState.format_num(need)]
-	_prestige_button.disabled = not GameState.can_prestige()
+	if GameState.is_web():
+		_prestige_button.disabled = true
+	else:
+		_prestige_button.disabled = not GameState.can_prestige()
 	_apply_prestige_label()
 
 func _apply_prestige_label() -> void:
@@ -58,6 +61,8 @@ func _apply_prestige_label() -> void:
 		_prestige_button.text = "Перерождение" if ru else "Rebirth"
 
 func _on_pressed() -> void:
+	if GameState.is_web():
+		return
 	if not GameState.can_prestige():
 		return
 	var ru := Loc.ru()

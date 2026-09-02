@@ -10,6 +10,7 @@ var _frenzy: UIFrenzy
 var _angela: UIAngela
 var _robot: UIRobot
 var _teddy: UITeddy
+var _web_button: UIWebButton
 var _ads: AdsController
 var _upgrade_panel: Control
 var _panel_toggle: Button
@@ -25,6 +26,10 @@ const BG_TEXTURES := [
 	preload("res://assets/fons/fon_5.png"),
 ]
 
+const T_WEB := preload("res://assets/web.png")
+const T_GRANNY := preload("res://assets/granny_button/granny.png")
+const T_GRANNY_PRESSED := preload("res://assets/granny_button/granny_pressed.png")
+
 func _ready() -> void:
 	_fx = UIFx.new(self)
 	_hud = UIHud.new(self)
@@ -37,6 +42,7 @@ func _ready() -> void:
 	_angela = UIAngela.new(self, _fx)
 	_robot = UIRobot.new(self, _fx)
 	_teddy = UITeddy.new(self, _fx)
+	_web_button = UIWebButton.new(self, _fx)
 	_frenzy._angela = _angela
 	_ads = AdsController.new(self, _fx)
 	_upgrade_panel = get_node("%UpgradePanel")
@@ -48,6 +54,10 @@ func _ready() -> void:
 	GameState.prestiged.connect(_fx.screamer)
 	GameState.loaded.connect(_apply_background)
 	GameState.prestiged.connect(_apply_background)
+	GameState.web_started.connect(_on_web_started)
+	GameState.web_ended.connect(_on_web_ended)
+	GameState.web_started.connect(_prestige.update)
+	GameState.web_ended.connect(_prestige.update)
 	_apply_background()
 	AudioManager.set_muted(not GameState.sound_on)
 	_fx.pulse_loop(%Oname, 0.55, 0.7)
@@ -58,6 +68,8 @@ func _process(delta: float) -> void:
 	_frenzy.tick(delta)
 	_angela.process(delta)
 	_robot.process(delta)
+	if _web_button:
+		_web_button.tick(delta)
 	if _ads:
 		_ads.tick(delta)
 
@@ -74,6 +86,24 @@ func _refresh_all() -> void:
 	_upgrades.update()
 	_prestige.update()
 	_frenzy.update_button()
+
+func _on_web_started() -> void:
+	var btn := get_node_or_null("%MemeButton")
+	if btn:
+		btn.texture_normal = T_WEB
+		btn.texture_pressed = T_WEB
+	_fx.show_toast(("Бабка в паутине! ×2 доход!" if Loc.ru() else "Granny in web! ×2 income!"))
+
+func _on_web_ended() -> void:
+	var btn := get_node_or_null("%MemeButton")
+	if btn:
+		if GameState.is_frenzy():
+			btn.texture_normal = preload("res://assets/grandpa_button/grandpa.png")
+			btn.texture_pressed = preload("res://assets/grandpa_button/grandpa_pressed.png")
+		else:
+			btn.texture_normal = T_GRANNY
+			btn.texture_pressed = T_GRANNY_PRESSED
+	_fx.show_toast(("Паутина исчезла" if Loc.ru() else "Web dissolved"))
 
 func _apply_background() -> void:
 	var idx := clampi(GameState.prestige_count, 0, BG_TEXTURES.size() - 1)

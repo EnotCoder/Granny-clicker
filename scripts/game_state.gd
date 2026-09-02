@@ -10,6 +10,8 @@ signal achievement_unlocked(id: String)
 signal achievements_changed()
 signal frenzy_started()
 signal frenzy_ended()
+signal web_started()
+signal web_ended()
 signal auto_clicked(amount: float)
 signal language_changed()
 signal prestiged()
@@ -82,12 +84,19 @@ const FRENZY_DURATION: float = 8.0
 const FRENZY_COOLDOWN: float = 30.0
 const FRENZY_MULT: float = 2.5
 
+# --- Паутина (web trap) ---
+const WEB_DURATION: float = 15.0
+const WEB_COOLDOWN: float = 20.0
+const WEB_MULT: float = 2.0
+
 var _time_since_save: float = 0.0
 var _last_shown: String = ""
 var _active: bool = true
 var _notified_achievements: Dictionary = {}
 var frenzy_time: float = 0.0
 var _frenzy_cd: float = 0.0
+var web_time: float = 0.0
+var _web_cd: float = 0.0
 
 func is_frenzy() -> bool:
 	return frenzy_time > 0.0
@@ -104,6 +113,24 @@ func start_frenzy() -> void:
 	frenzy_time = FRENZY_DURATION
 	_frenzy_cd = FRENZY_COOLDOWN
 	frenzy_started.emit()
+	coins_changed.emit()
+
+# --- Паутина (web trap) ---
+func is_web() -> bool:
+	return web_time > 0.0
+
+func can_start_web() -> bool:
+	return not is_web() and _web_cd <= 0.0
+
+func web_cd_left() -> float:
+	return maxf(_web_cd, 0.0)
+
+func start_web() -> void:
+	if not can_start_web():
+		return
+	web_time = WEB_DURATION
+	_web_cd = WEB_COOLDOWN
+	web_started.emit()
 	coins_changed.emit()
 
 func set_active(v: bool) -> void:
@@ -130,6 +157,15 @@ func _process(delta: float) -> void:
 			_frenzy_cd = maxf(_frenzy_cd - delta, 0.0)
 			if not was_ready and can_start_frenzy():
 				coins_changed.emit()
+		if web_time > 0.0:
+			web_time = maxf(web_time - delta, 0.0)
+			if web_time == 0.0:
+				web_ended.emit()
+		if _web_cd > 0.0:
+			var was_ready_web := can_start_web()
+			_web_cd = maxf(_web_cd - delta, 0.0)
+			if not was_ready_web and can_start_web():
+				coins_changed.emit()
 	_time_since_save += delta
 	if _time_since_save >= AUTOSAVE_INTERVAL:
 		_time_since_save = 0.0
@@ -146,7 +182,10 @@ func crit_mult() -> float:
 	return 2.0 + 0.5 * float(crit_level)
 
 func income_mult() -> float:
-	return (1.0 + 0.1 * float(gold_level)) * (1.0 + 0.10 * float(prestige_souls))
+	var mult := (1.0 + 0.1 * float(gold_level)) * (1.0 + 0.10 * float(prestige_souls))
+	if is_web():
+		mult *= WEB_MULT
+	return mult
 
 func get_money_per_sec() -> float:
 	var base := float(passive_level) + float(auto_level) * click_power()
@@ -212,6 +251,8 @@ func upgrade_cost(id: String) -> float:
 	return base * pow(COST_GROWTH, upgrade_level(id))
 
 func buy_upgrade(id: String) -> bool:
+	if is_web():
+		return false
 	var cost := upgrade_cost(id)
 	if not can_afford(cost):
 		return false

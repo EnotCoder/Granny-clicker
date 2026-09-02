@@ -26,6 +26,8 @@ func _init(root: Control, fx: UIFx) -> void:
 	update_button()
 
 func _on_pressed() -> void:
+	if GameState.is_web():
+		return
 	GameState.start_frenzy()
 	if GameState.is_frenzy():
 		AudioManager.play_prestige()
@@ -58,7 +60,10 @@ func update_button() -> void:
 		return
 	var ru := Loc.ru()
 	var label: String
-	if GameState.is_frenzy():
+	if GameState.is_web():
+		_frenzy_button.disabled = true
+		label = ("Паутина!" if ru else "In web!")
+	elif GameState.is_frenzy():
 		_frenzy_button.disabled = true
 		label = ("Бешеный дедушка: %dс" if ru else "Grandpa Rage: %ds") % int(ceil(GameState.frenzy_time))
 	elif GameState.can_start_frenzy():

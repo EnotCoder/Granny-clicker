@@ -36,9 +36,13 @@ func update() -> void:
 	var ru := Loc.ru()
 	if _title:
 		_title.text = "Апгрейды" if ru else "Upgrades"
+	var web_blocked := GameState.is_web()
 	for id in _buttons:
 		var btn: Button = _buttons[id]
 		btn.text = _upgrade_text(id, ru)
+		if web_blocked:
+			btn.disabled = true
+			continue
 		var afford := GameState.can_afford(GameState.upgrade_cost(id))
 		if btn.disabled == afford and _last_disabled.get(id, true):
 			_fx.punch(btn)

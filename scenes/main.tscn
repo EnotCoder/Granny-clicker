@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bjfq3saefacre" path="res://assets/settings.png" id="7_settings"]
 [ext_resource type="Texture2D" uid="uid://qrj4slinq8rv" path="res://assets/angela.png" id="8_angela"]
 [ext_resource type="Texture2D" uid="uid://3rug71o3hxfm" path="res://assets/robot.png" id="9_robot"]
+[ext_resource type="Texture2D" uid="uid://t747hejr8jxa" path="res://assets/baby_of_slenderine.png" id="10_baby"]
 
 [sub_resource type="StyleBoxFlat" id="sb_counter"]
 bg_color = Color(0.07, 0.067, 0.09, 1)
@@ -819,11 +820,6 @@ text = "→"
 [node name="TeddyButton" type="TextureButton" parent="." unique_id=1010000091]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_left = 610.0
 offset_top = 280.0
 offset_right = 750.0
@@ -831,6 +827,37 @@ offset_bottom = 440.0
 focus_mode = 0
 ignore_texture_size = true
 stretch_mode = 5
+
+[node name="WebButton" type="TextureButton" parent="." unique_id=1289864750]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 606.0
+offset_top = 554.0
+offset_right = 746.0
+offset_bottom = 714.0
+focus_mode = 0
+texture_normal = ExtResource("10_baby")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="WebLabel" type="Label" parent="WebButton" unique_id=1687088302]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -47.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 18
+text = "Паутина ×2"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="OfflineLabel" type="Label" parent="." unique_id=1933767652]
 unique_name_in_owner = true
@@ -1250,13 +1277,13 @@ text = "Закрыть"
 [node name="TeddyPanel" type="ColorRect" parent="." unique_id=1010000092]
 unique_name_in_owner = true
 visible = false
+z_index = 160
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-z_index = 160
 color = Color(0, 0, 0, 0.55)
 
 [node name="TeddyCenter" type="Panel" parent="TeddyPanel" unique_id=1010000093]
@@ -1319,7 +1346,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
 
-[node name="EvenButton" type="Button" parent="TeddyPanel/TeddyCenter/TeddyBox" unique_name_in_owner = true]
+[node name="EvenButton" type="Button" parent="TeddyPanel/TeddyCenter/TeddyBox" unique_id=39835495]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1332,7 +1359,7 @@ theme_override_styles/disabled = SubResource("sb_btn_disabled")
 theme_override_styles/focus = SubResource("sb_empty")
 text = "Чёт"
 
-[node name="OddButton" type="Button" parent="TeddyPanel/TeddyCenter/TeddyBox" unique_name_in_owner = true]
+[node name="OddButton" type="Button" parent="TeddyPanel/TeddyCenter/TeddyBox" unique_id=907465548]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1345,7 +1372,7 @@ theme_override_styles/disabled = SubResource("sb_btn_disabled")
 theme_override_styles/focus = SubResource("sb_empty")
 text = "Нечёт"
 
-[node name="TeddyCloseButton" type="Button" parent="TeddyPanel/TeddyCenter/TeddyBox" unique_name_in_owner = true]
+[node name="TeddyCloseButton" type="Button" parent="TeddyPanel/TeddyCenter/TeddyBox" unique_id=1231866564]
 custom_minimum_size = Vector2(0, 46)
 layout_mode = 2
 size_flags_horizontal = 3

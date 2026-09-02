@@ -25,6 +25,8 @@ func _init(root: Control, fx: UIFx) -> void:
 	_on_lang()
 
 func _on_button_pressed() -> void:
+	if GameState.is_web():
+		return
 	_build()
 	_panel.visible = not _panel.visible
 
@@ -99,5 +101,7 @@ func _build() -> void:
 		_list.add_child(row)
 
 func _claim(id: String, _row: Control) -> void:
+	if GameState.is_web():
+		return
 	if GameState.claim_achievement(id):
 		AudioManager.play_ach()
